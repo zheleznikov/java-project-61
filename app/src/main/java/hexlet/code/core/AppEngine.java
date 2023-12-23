@@ -14,6 +14,7 @@ public class AppEngine {
 
 
     private static void showMenu() {
+        System.out.println("Welcome to the Brain Games!");
         System.out.println("Please enter the game number and press Enter.");
         for (Game game : Game.values()) {
             System.out.println(game.input + " - " + game);
