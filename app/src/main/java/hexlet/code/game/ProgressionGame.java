@@ -17,7 +17,7 @@ public class ProgressionGame {
     private static boolean execute(Scanner scanner) {
         String progression = createProgression();
 
-        System.out.println(progression);
+        System.out.println("Question: " + progression);
         userAnswer = scanner.nextLine();
 
         return isAnswerCorrect();
