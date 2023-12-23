@@ -2,15 +2,19 @@ package hexlet.code.game;
 
 import java.util.Scanner;
 
-import static hexlet.code.core.GameEngine.*;
+import static hexlet.code.core.GameEngine.executeGame;
+import static hexlet.code.core.GameEngine.setUserAnswer;
+import static hexlet.code.core.GameEngine.setCorrectAnswer;
+import static hexlet.code.core.GameEngine.getUserAnswer;
+import static hexlet.code.core.GameEngine.getCorrectAnswer;
 import static hexlet.code.core.Utils.createRandomNumber;
 
 public class ProgressionGame {
 
-    private static final int maxRandomValueForStep = 10;
-    private static final int maxFirstValueInProgression = 10;
-    private static final int minLengthForProgression = 5;
-    private static final int maxLengthForProgression = 10;
+    private static final int MAX_VALUE_FOR_STEP = 10;
+    private static final int MAX_FIRST_VALUE_IN_PROGRESSION = 10;
+    private static final int MIN_LENGTH_FOR_PROGRESSION = 5;
+    private static final int MAX_LENGTH_FOR_PROGRESSION = 10;
 
     public static void play() {
         String taskCondition = "What number is missing in the progression?";
@@ -31,9 +35,9 @@ public class ProgressionGame {
     }
 
     private static String createProgression() {
-        int step = createRandomNumber(1, maxRandomValueForStep);
-        int length = createRandomNumber(minLengthForProgression, maxLengthForProgression);
-        int firstNum = createRandomNumber(maxFirstValueInProgression);
+        int step = createRandomNumber(1, MAX_VALUE_FOR_STEP);
+        int length = createRandomNumber(MIN_LENGTH_FOR_PROGRESSION, MAX_LENGTH_FOR_PROGRESSION);
+        int firstNum = createRandomNumber(MAX_FIRST_VALUE_IN_PROGRESSION);
 
         int[] progression = new int[length];
         progression[0] = firstNum;

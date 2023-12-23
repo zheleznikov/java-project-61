@@ -2,13 +2,17 @@ package hexlet.code.game;
 
 import java.util.Scanner;
 
-import static hexlet.code.core.GameEngine.*;
+import static hexlet.code.core.GameEngine.executeGame;
+import static hexlet.code.core.GameEngine.setUserAnswer;
+import static hexlet.code.core.GameEngine.setCorrectAnswer;
+import static hexlet.code.core.GameEngine.getUserAnswer;
+import static hexlet.code.core.GameEngine.getCorrectAnswer;
 import static hexlet.code.core.Utils.createRandomNumber;
 
 public class GCDGame {
 
-    private static final int maxRandomValueForFirstNumber = 25;
-    private static final int maxRandomValueForSecondNumber = 10;
+    private static final int MAX_VALUE_FOR_FIRST_NUMBER = 25;
+    private static final int MAX_VALUE_FOR_SECOND_NUMBER = 10;
 
     public static void play() {
         String taskCondition = "Find the greatest common divisor of given numbers.";
@@ -16,8 +20,8 @@ public class GCDGame {
     }
 
     private static boolean execute(Scanner scanner) {
-        int firstNum = createRandomNumber(maxRandomValueForFirstNumber);
-        int secondNum = createRandomNumber(maxRandomValueForSecondNumber);
+        int firstNum = createRandomNumber(MAX_VALUE_FOR_FIRST_NUMBER);
+        int secondNum = createRandomNumber(MAX_VALUE_FOR_SECOND_NUMBER);
 
         System.out.println("Question: " + firstNum + " " + secondNum);
 

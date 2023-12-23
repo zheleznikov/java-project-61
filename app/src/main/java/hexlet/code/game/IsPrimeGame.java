@@ -3,12 +3,16 @@ package hexlet.code.game;
 import java.util.Locale;
 import java.util.Scanner;
 
-import static hexlet.code.core.GameEngine.*;
+import static hexlet.code.core.GameEngine.executeGame;
+import static hexlet.code.core.GameEngine.setUserAnswer;
+import static hexlet.code.core.GameEngine.setCorrectAnswer;
+import static hexlet.code.core.GameEngine.getUserAnswer;
+
 import static hexlet.code.core.Utils.createRandomNumber;
 
 public class IsPrimeGame {
 
-    private static final int maxRandomValueForIsPrime = 10;
+    private static final int MAX_VALUE_FOR_IS_PRIME_GAME = 10;
 
     public static void play() {
         String taskCondition = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
@@ -16,7 +20,7 @@ public class IsPrimeGame {
     }
 
     private static boolean execute(Scanner scanner) {
-        int random = createRandomNumber(1, maxRandomValueForIsPrime);
+        int random = createRandomNumber(1, MAX_VALUE_FOR_IS_PRIME_GAME);
         System.out.println("Question: " + random);
 
         setUserAnswer(scanner.nextLine());

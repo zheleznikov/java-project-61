@@ -20,9 +20,9 @@ public enum Game {
     private final String input;
     private final Runnable selected;
 
-    Game(String input, Runnable selected) {
-        this.input = input;
-        this.selected = selected;
+    Game(String userInput, Runnable selectedFunc) {
+        this.input = userInput;
+        this.selected = selectedFunc;
     }
 
     public String getInput() {

@@ -10,12 +10,12 @@ public class GameEngine {
     private static String correctAnswer;
     private static String userAnswer;
 
-    public static void setCorrectAnswer(String correctAnswer) {
-        GameEngine.correctAnswer = correctAnswer;
+    public static void setCorrectAnswer(String answer) {
+        GameEngine.correctAnswer = answer;
     }
 
-    public static void setUserAnswer(String userAnswer) {
-        GameEngine.userAnswer = userAnswer;
+    public static void setUserAnswer(String answer) {
+        GameEngine.userAnswer = answer;
     }
 
     public static String getCorrectAnswer() {
