@@ -1,41 +1,21 @@
 package hexlet.code.game;
 
-import hexlet.code.Cli;
-
 import java.util.Scanner;
 
 import static hexlet.code.core.Utils.createRandomNumber;
+import static hexlet.code.game.GameEngine.*;
 
 public class CalculatorGame {
 
-    private final static int winResult = 3;
-    private static String correctAnswer;
-    private static String userAnswer;
 
     public static void play() {
         Scanner scanner = new Scanner(System.in);
         String name = Cli.greetUser(scanner);
         System.out.println("What is the result of the expression?");
 
-        int count = 0;
-        while (count < winResult) {
-
-            if (executeGame(scanner)) {
-                System.out.println("Correct!");
-                count++;
-
-            } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
-                System.out.println("Let's try again, " + name + "!");
-                break;
-            }
-        }
-
-        if (count == winResult) System.out.println("Congratulations, " + name + "!");
+        runGame(name, scanner, CalculatorGame::executeGame);
         scanner.close();
     }
-
-
 
     private static boolean executeGame(Scanner scanner) {
         int firstNum = createRandomNumber(9);

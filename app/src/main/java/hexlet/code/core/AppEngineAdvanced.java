@@ -9,7 +9,7 @@ import java.util.Scanner;
  <p>Недостатки - использования enum и интерфейса runnable может быть неочевидно
  на ранней стадии изучения языка.</p>
  */
-public class EngineAdvanced {
+public class AppEngineAdvanced {
 
     public static void start() {
         showMenu();

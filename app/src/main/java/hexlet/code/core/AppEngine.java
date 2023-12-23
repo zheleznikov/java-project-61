@@ -1,6 +1,6 @@
 package hexlet.code.core;
 
-import hexlet.code.Cli;
+import hexlet.code.game.Cli;
 import hexlet.code.game.CalculatorGame;
 import hexlet.code.game.IsEvenGame;
 
@@ -12,7 +12,7 @@ import java.util.Scanner;
     <p>Недостатки - возможное исправление кода в двух местах: в методе <b>showMenu</b> и
     <b>selectGame</b>при каком-либо изменении бизнес-логики приложения.</p>
  */
-public class Engine {
+public class AppEngine {
 
     public static void start() {
         showMenu();

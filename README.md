@@ -13,3 +13,7 @@
 ### Calc game demo play
 
 ![calc](demo/calc-game.gif)
+
+### GCD game demo play
+
+![gcd](demo/gcd-game.gif)

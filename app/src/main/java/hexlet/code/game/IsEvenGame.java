@@ -1,37 +1,20 @@
 package hexlet.code.game;
 
-import hexlet.code.Cli;
-
 import java.util.Locale;
 import java.util.Scanner;
 
 import static hexlet.code.core.Utils.createRandomNumber;
+import static hexlet.code.game.GameEngine.*;
 
 public class IsEvenGame {
 
-    private final static int winResult = 3;
-    private static String correctAnswer;
-    private static String userAnswer;
 
     public static void play() {
         Scanner scanner = new Scanner(System.in);
         String name = Cli.greetUser(scanner);
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
-        int count = 0;
-        while (count < winResult) {
-
-            if (executeGame(scanner)) {
-                System.out.println("Correct!");
-                count++;
-
-            } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
-                break;
-            }
-        }
-
-        if (count == winResult) System.out.println("Congratulations, " + name  + "!");
+        runGame(name, scanner, IsEvenGame::executeGame);
         scanner.close();
     }
 
