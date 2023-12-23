@@ -3,9 +3,9 @@ package hexlet.code.game;
 import java.util.Scanner;
 
 import static hexlet.code.core.Utils.createRandomNumber;
-import static hexlet.code.game.GameEngine.userAnswer;
-import static hexlet.code.game.GameEngine.correctAnswer;
-import static hexlet.code.game.GameEngine.executeGame;
+import static hexlet.code.core.GameEngine.userAnswer;
+import static hexlet.code.core.GameEngine.correctAnswer;
+import static hexlet.code.core.GameEngine.executeGame;
 
 public class ProgressionGame {
 
