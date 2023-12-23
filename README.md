@@ -7,4 +7,9 @@
 
 
 ### IsEven game demo play
-To watch gif you should select "open original". [Here is the link](https://disk.yandex.ru/i/Rv5kWxQ8Jz7e9Q)
+
+![even](demo/even-game.gif)
+
+### Calc game demo play
+
+![calc](demo/calc-game.gif)

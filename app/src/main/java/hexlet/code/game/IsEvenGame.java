@@ -1,7 +1,11 @@
-package hexlet.code;
+package hexlet.code.game;
+
+import hexlet.code.Cli;
 
 import java.util.Locale;
 import java.util.Scanner;
+
+import static hexlet.code.core.Utils.createRandomNumber;
 
 public class IsEvenGame {
 
@@ -9,7 +13,8 @@ public class IsEvenGame {
     private static String correctAnswer;
     private static String userAnswer;
 
-    public static void play(Scanner scanner) {
+    public static void play() {
+        Scanner scanner = new Scanner(System.in);
         String name = Cli.greetUser(scanner);
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
@@ -27,11 +32,11 @@ public class IsEvenGame {
         }
 
         if (count == winResult) System.out.println("Congratulations, " + name  + "!");
-
+        scanner.close();
     }
 
     private static boolean executeGame(Scanner scanner) {
-        int random = createRandomNumber();
+        int random = createRandomNumber(99);
         System.out.println("Question: " + random);
 
         userAnswer = scanner.nextLine();
@@ -50,7 +55,4 @@ public class IsEvenGame {
         return "NO".equals(answer.toUpperCase(Locale.ROOT));
     }
 
-    private static int createRandomNumber() {
-        return (int) (Math.random() * (Integer.MAX_VALUE));
-    }
 }
