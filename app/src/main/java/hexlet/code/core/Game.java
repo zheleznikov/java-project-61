@@ -17,12 +17,20 @@ public enum Game {
     Prime("6", IsPrimeGame::play),
     Exit("0", () -> System.out.println("Bye"));
 
-    public final String input;
-    public final Runnable selected;
+    private final String input;
+    private final Runnable selected;
 
     Game(String input, Runnable selected) {
         this.input = input;
         this.selected = selected;
+    }
+
+    public String getInput() {
+        return this.input;
+    }
+
+    public Runnable getSelected() {
+        return this.selected;
     }
 
 }

@@ -7,8 +7,24 @@ import java.util.function.Function;
 
 public class GameEngine {
     public static final int WIN_RESULT = 3;
-    public static String correctAnswer;
-    public static String userAnswer;
+    private static String correctAnswer;
+    private static String userAnswer;
+
+    public static void setCorrectAnswer(String correctAnswer) {
+        GameEngine.correctAnswer = correctAnswer;
+    }
+
+    public static void setUserAnswer(String userAnswer) {
+        GameEngine.userAnswer = userAnswer;
+    }
+
+    public static String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public static String getUserAnswer() {
+        return userAnswer;
+    }
 
     public static void executeGame(Function<Scanner, Boolean> func, String taskCondition) {
         try (Scanner scanner = new Scanner(System.in)) {

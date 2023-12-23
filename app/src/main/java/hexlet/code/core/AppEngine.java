@@ -17,7 +17,7 @@ public class AppEngine {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("Please enter the game number and press Enter.");
         for (Game game : Game.values()) {
-            System.out.println(game.input + " - " + game);
+            System.out.println(game.getInput() + " - " + game);
         }
         System.out.print("Your choice: ");
     }
@@ -26,8 +26,8 @@ public class AppEngine {
         int count = 0;
         for (Game game : Game.values()) {
 
-            if (userSelect.equals(game.input)) {
-                game.selected.run();
+            if (userSelect.equals(game.getInput())) {
+                game.getSelected().run();
                 count++;
             }
         }

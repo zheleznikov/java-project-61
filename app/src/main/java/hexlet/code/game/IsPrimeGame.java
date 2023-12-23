@@ -3,12 +3,12 @@ package hexlet.code.game;
 import java.util.Locale;
 import java.util.Scanner;
 
+import static hexlet.code.core.GameEngine.*;
 import static hexlet.code.core.Utils.createRandomNumber;
-import static hexlet.code.core.GameEngine.userAnswer;
-import static hexlet.code.core.GameEngine.correctAnswer;
-import static hexlet.code.core.GameEngine.executeGame;
 
 public class IsPrimeGame {
+
+    private static final int maxRandomValueForIsPrime = 10;
 
     public static void play() {
         String taskCondition = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
@@ -16,22 +16,22 @@ public class IsPrimeGame {
     }
 
     private static boolean execute(Scanner scanner) {
-        int random = createRandomNumber(1, 10);
+        int random = createRandomNumber(1, maxRandomValueForIsPrime);
         System.out.println("Question: " + random);
 
-        userAnswer = scanner.nextLine();
+        setUserAnswer(scanner.nextLine());
 
         boolean isPrime = isPrime(random);
 
-        return isAnswerCorrect(userAnswer, isPrime);
+        return isAnswerCorrect(getUserAnswer(), isPrime);
     }
 
     private static boolean isAnswerCorrect(String answer, boolean isPrime) {
         if (isPrime) {
-            correctAnswer = "yes";
+            setCorrectAnswer("yes");
             return "YES".equals(answer.toUpperCase(Locale.ROOT));
         }
-        correctAnswer = "no";
+        setCorrectAnswer("no");
         return "NO".equals(answer.toUpperCase(Locale.ROOT));
     }
 
