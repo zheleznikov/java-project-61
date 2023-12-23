@@ -3,21 +3,18 @@ package hexlet.code.game;
 import java.util.Scanner;
 
 import static hexlet.code.core.Utils.createRandomNumber;
-import static hexlet.code.game.GameEngine.*;
+import static hexlet.code.game.GameEngine.correctAnswer;
+import static hexlet.code.game.GameEngine.userAnswer;
+import static hexlet.code.game.GameEngine.executeGame;
 
 public class CalculatorGame {
 
-
     public static void play() {
-        Scanner scanner = new Scanner(System.in);
-        String name = Cli.greetUser(scanner);
-        System.out.println("What is the result of the expression?");
-
-        runGame(name, scanner, CalculatorGame::executeGame);
-        scanner.close();
+        String taskCondition = "What is the result of the expression?";
+        executeGame(CalculatorGame::execute, taskCondition);
     }
 
-    private static boolean executeGame(Scanner scanner) {
+    private static boolean execute(Scanner scanner) {
         int firstNum = createRandomNumber(9);
         int secondNum = createRandomNumber(9);
         String operation = getRandomOperation();
@@ -29,12 +26,12 @@ public class CalculatorGame {
     }
 
     private static boolean isAnswerCorrect(int firstNum, int secondNum, String operation) {
-        correctAnswer = (switch (operation) {
+        correctAnswer = switch (operation) {
             case "+" -> String.valueOf(firstNum + secondNum);
             case "-" -> String.valueOf(firstNum - secondNum);
             case "*" -> String.valueOf(firstNum * secondNum);
             default -> throw new IllegalStateException("Unexpected value: " + operation);
-        });
+        };
 
         return userAnswer.equals(correctAnswer);
     }

@@ -1,13 +1,10 @@
 package hexlet.code;
 
-import hexlet.code.core.AppEngineAdvanced;
+import hexlet.code.core.AppEngine;
 
 public class App {
     public static void main(String[] args) {
-        AppEngineAdvanced.start();
+        AppEngine.start();
     }
-
-
-
 
 }

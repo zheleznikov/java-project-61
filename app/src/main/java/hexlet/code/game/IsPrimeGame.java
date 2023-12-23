@@ -8,27 +8,26 @@ import static hexlet.code.game.GameEngine.userAnswer;
 import static hexlet.code.game.GameEngine.correctAnswer;
 import static hexlet.code.game.GameEngine.executeGame;
 
-public class IsEvenGame {
-
+public class IsPrimeGame {
 
     public static void play() {
         String taskCondition = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        executeGame(IsEvenGame::execute, taskCondition);
+        executeGame(IsPrimeGame::execute, taskCondition);
     }
 
     private static boolean execute(Scanner scanner) {
-        int random = createRandomNumber(99);
+        int random = createRandomNumber(1, 10);
         System.out.println("Question: " + random);
 
         userAnswer = scanner.nextLine();
 
-        boolean isRandomEven = random % 2 == 0;
+        boolean isPrime = isPrime(random);
 
-        return isAnswerCorrect(userAnswer, isRandomEven);
+        return isAnswerCorrect(userAnswer, isPrime);
     }
 
-    private static boolean isAnswerCorrect(String answer, boolean isRandomEven) {
-        if (isRandomEven) {
+    private static boolean isAnswerCorrect(String answer, boolean isPrime) {
+        if (isPrime) {
             correctAnswer = "yes";
             return "YES".equals(answer.toUpperCase(Locale.ROOT));
         }
@@ -36,4 +35,17 @@ public class IsEvenGame {
         return "NO".equals(answer.toUpperCase(Locale.ROOT));
     }
 
+    public static boolean isPrime(int number) {
+        if (number == 1) {
+            return false;
+        }
+
+        for (int i = 2; i * i <= number; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

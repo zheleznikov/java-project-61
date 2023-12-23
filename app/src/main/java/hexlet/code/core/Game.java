@@ -1,9 +1,11 @@
 package hexlet.code.core;
 
-import hexlet.code.game.Cli;
 import hexlet.code.game.CalculatorGame;
+import hexlet.code.game.Cli;
 import hexlet.code.game.GCDGame;
 import hexlet.code.game.IsEvenGame;
+import hexlet.code.game.ProgressionGame;
+import hexlet.code.game.IsPrimeGame;
 
 public enum Game {
 
@@ -11,7 +13,9 @@ public enum Game {
     Even("2", IsEvenGame::play),
     Calc("3", CalculatorGame::play),
     GCD("4", GCDGame::play),
-    Exit("0", () -> System.out.println("Bye") );
+    Progression("5", ProgressionGame::play),
+    Prime("6", IsPrimeGame::play),
+    Exit("0", () -> System.out.println("Bye"));
 
     public final String input;
     public final Runnable selected;

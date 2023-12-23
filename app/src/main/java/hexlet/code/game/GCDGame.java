@@ -3,21 +3,18 @@ package hexlet.code.game;
 import java.util.Scanner;
 
 import static hexlet.code.core.Utils.createRandomNumber;
-import static hexlet.code.game.GameEngine.*;
 import static hexlet.code.game.GameEngine.correctAnswer;
+import static hexlet.code.game.GameEngine.userAnswer;
+import static hexlet.code.game.GameEngine.executeGame;
 
 public class GCDGame {
 
     public static void play() {
-        Scanner scanner = new Scanner(System.in);
-        String name = Cli.greetUser(scanner);
-        System.out.println("Find the greatest common divisor of given numbers.");
-
-        runGame(name, scanner, GCDGame::executeGame);
-        scanner.close();
+        String taskCondition = "Find the greatest common divisor of given numbers.";
+        executeGame(GCDGame::execute, taskCondition);
     }
 
-    private static boolean executeGame(Scanner scanner) {
+    private static boolean execute(Scanner scanner) {
         int firstNum = createRandomNumber(25);
         int secondNum = createRandomNumber(10);
 
