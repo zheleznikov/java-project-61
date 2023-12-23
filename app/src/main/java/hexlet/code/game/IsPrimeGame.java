@@ -11,7 +11,7 @@ import static hexlet.code.core.GameEngine.executeGame;
 public class IsPrimeGame {
 
     public static void play() {
-        String taskCondition = "Answer 'yes' if given number is prime, otherwise answer 'no'.";
+        String taskCondition = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
         executeGame(IsPrimeGame::execute, taskCondition);
     }
 
