@@ -1,41 +1,32 @@
 package hexlet.code.game;
 
-import java.util.Locale;
+import hexlet.code.core.GameEngine;
+
 import java.util.Scanner;
 
-import static hexlet.code.core.GameEngine.executeGame;
-import static hexlet.code.core.GameEngine.setUserAnswer;
-import static hexlet.code.core.GameEngine.setCorrectAnswer;
-import static hexlet.code.core.GameEngine.getUserAnswer;
+import static hexlet.code.core.GameEngine.WIN_RESULT;
 import static hexlet.code.core.Utils.createRandomNumber;
 
 public class IsEvenGame {
 
     private static final int MAX_VALUE_FOR_IS_EVEN_GAME = 99;
-    public static void play() {
+
+    public static void play(Scanner scanner) {
         String taskCondition = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        executeGame(IsEvenGame::execute, taskCondition);
+        String[][] gameData = createGameData(WIN_RESULT);
+        GameEngine.executeGame(taskCondition, gameData, scanner);
     }
 
-    private static boolean execute(Scanner scanner) {
+    private static String[][] createGameData(int count) {
+        String[][] gameData = new String[count][2];
 
-        int random = createRandomNumber(MAX_VALUE_FOR_IS_EVEN_GAME);
-        System.out.println("Question: " + random);
-
-        setUserAnswer(scanner.nextLine());
-
-        boolean isRandomEven = random % 2 == 0;
-
-        return isAnswerCorrect(getUserAnswer(), isRandomEven);
-    }
-
-    private static boolean isAnswerCorrect(String answer, boolean isRandomEven) {
-        if (isRandomEven) {
-            setCorrectAnswer("yes");
-            return "YES".equals(answer.toUpperCase(Locale.ROOT));
+        for (int i = 0; i < count; i++) {
+            int random = createRandomNumber(MAX_VALUE_FOR_IS_EVEN_GAME);
+            String isRandomEven = random % 2 == 0 ? "yes" : "no";
+            gameData[i] = new String[]{String.valueOf(random), isRandomEven};
         }
-        setCorrectAnswer("no");
-        return "NO".equals(answer.toUpperCase(Locale.ROOT));
+
+        return gameData;
     }
 
 }

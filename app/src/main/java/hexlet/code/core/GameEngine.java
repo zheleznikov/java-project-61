@@ -3,53 +3,38 @@ package hexlet.code.core;
 import hexlet.code.game.Cli;
 
 import java.util.Scanner;
-import java.util.function.Function;
 
 public class GameEngine {
     public static final int WIN_RESULT = 3;
-    private static String correctAnswer;
-    private static String userAnswer;
 
-    public static void setCorrectAnswer(String answer) {
-        GameEngine.correctAnswer = answer;
-    }
+    public static void executeGame(String taskCondition, String[][] gameData, Scanner scanner) {
+        String name = Cli.greetUser(scanner);
+        System.out.println(taskCondition);
 
-    public static void setUserAnswer(String answer) {
-        GameEngine.userAnswer = answer;
-    }
+        int count = 0;
+        while (count < WIN_RESULT) {
+            String question = gameData[count][0];
+            String correctAnswer = gameData[count][1];
 
-    public static String getCorrectAnswer() {
-        return correctAnswer;
-    }
+            System.out.println("Question: " + question);
 
-    public static String getUserAnswer() {
-        return userAnswer;
-    }
+            String userAnswer = scanner.nextLine();
 
-    public static void executeGame(Function<Scanner, Boolean> func, String taskCondition) {
-        try (Scanner scanner = new Scanner(System.in)) {
-            String name = Cli.greetUser(scanner);
-            System.out.println(taskCondition);
+            if (correctAnswer.equals(userAnswer)) {
+                System.out.println("Correct!");
+                count++;
 
-            int count = 0;
-            while (count < WIN_RESULT) {
-
-                if (func.apply(scanner)) {
-                    System.out.println("Correct!");
-                    count++;
-
-                } else {
-                    System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '"
-                            + correctAnswer + "'");
-                    System.out.println("Let's try again, " + name + "!");
-                    break;
-                }
+            } else {
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '"
+                        + correctAnswer + "'");
+                System.out.println("Let's try again, " + name + "!");
+                break;
             }
+        }
 
-            if (count == WIN_RESULT) {
-                System.out.println("Congratulations, " + name + "!");
+        if (count == WIN_RESULT) {
+            System.out.println("Congratulations, " + name + "!");
 
-            }
         }
 
     }

@@ -2,11 +2,8 @@ package hexlet.code.game;
 
 import java.util.Scanner;
 
+import static hexlet.code.core.GameEngine.WIN_RESULT;
 import static hexlet.code.core.GameEngine.executeGame;
-import static hexlet.code.core.GameEngine.setUserAnswer;
-import static hexlet.code.core.GameEngine.setCorrectAnswer;
-import static hexlet.code.core.GameEngine.getUserAnswer;
-import static hexlet.code.core.GameEngine.getCorrectAnswer;
 import static hexlet.code.core.Utils.createRandomNumber;
 
 public class ProgressionGame {
@@ -16,25 +13,15 @@ public class ProgressionGame {
     private static final int MIN_LENGTH_FOR_PROGRESSION = 5;
     private static final int MAX_LENGTH_FOR_PROGRESSION = 10;
 
-    public static void play() {
+    public static void play(Scanner scanner) {
         String taskCondition = "What number is missing in the progression?";
-        executeGame(ProgressionGame::execute, taskCondition);
+        String[][] gameData = createGameData(WIN_RESULT);
+
+        executeGame(taskCondition, gameData, scanner);
     }
 
-    private static boolean execute(Scanner scanner) {
-        String progression = createProgression();
 
-        System.out.println("Question: " + progression);
-        setUserAnswer(scanner.nextLine());
-
-        return isAnswerCorrect();
-    }
-
-    private static boolean isAnswerCorrect() {
-        return getCorrectAnswer().equals(getUserAnswer());
-    }
-
-    private static String createProgression() {
+    private static String[] createProgression() {
         int step = createRandomNumber(1, MAX_VALUE_FOR_STEP);
         int length = createRandomNumber(MIN_LENGTH_FOR_PROGRESSION, MAX_LENGTH_FOR_PROGRESSION);
         int firstNum = createRandomNumber(MAX_FIRST_VALUE_IN_PROGRESSION);
@@ -63,8 +50,21 @@ public class ProgressionGame {
 
         }
 
-        setCorrectAnswer(String.valueOf(randomHiddenValue));
-        return builder.toString();
+        return new String[]{builder.toString(), String.valueOf(randomHiddenValue)};
+    }
+
+    private static String[][] createGameData(int count) {
+        String[][] gameData = new String[count][2];
+
+        for (int i = 0; i < count; i++) {
+            String[] progression = createProgression();
+            String question = progression[0];
+            String answer = progression[1];
+            gameData[i] = new String[]{question, answer};
+
+        }
+
+        return gameData;
     }
 
 
