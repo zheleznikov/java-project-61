@@ -1,4 +1,5 @@
 # Hexlet project MindGames
+That's advanced lambda-using and avoid duplicate code version. Simple version stores in main branch.
 
 ### Hexlet tests and linter status
 [![Actions Status](https://github.com/zheleznikov/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/zheleznikov/java-project-61/actions)
