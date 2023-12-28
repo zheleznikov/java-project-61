@@ -1,7 +1,5 @@
 package hexlet.code.game;
 
-import java.util.Scanner;
-
 import static hexlet.code.core.GameEngine.WIN_RESULT;
 import static hexlet.code.core.GameEngine.executeGame;
 import static hexlet.code.core.Utils.createRandomNumber;
@@ -12,13 +10,13 @@ public class GCDGame {
     private static final int MAX_VALUE_FOR_SECOND_NUMBER = 10;
 
 
-    public static void play(Scanner scanner) {
+    public static void play() {
         String taskCondition = "Find the greatest common divisor of given numbers.";
         String[][] gameData = createGameData(WIN_RESULT);
-        executeGame(taskCondition, gameData, scanner);
+        executeGame(taskCondition, gameData);
     }
 
-    private static String calcGcd(int x, int y) {
+    private static int calcGcd(int x, int y) {
         while (x != 0 && y != 0) {
 
             if (x > y) {
@@ -28,7 +26,7 @@ public class GCDGame {
             }
         }
 
-        return String.valueOf(x + y);
+        return x + y;
     }
 
     private static String[][] createGameData(int count) {
@@ -39,7 +37,7 @@ public class GCDGame {
             int secondNum = createRandomNumber(MAX_VALUE_FOR_SECOND_NUMBER);
 
             String question = firstNum + " " + secondNum;
-            String answer = calcGcd(firstNum, secondNum);
+            String answer = String.valueOf(calcGcd(firstNum, secondNum));
 
             gameData[i] = new String[]{question, answer};
         }

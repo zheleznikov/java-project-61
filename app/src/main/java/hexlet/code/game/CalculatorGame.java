@@ -1,7 +1,5 @@
 package hexlet.code.game;
 
-import java.util.Scanner;
-
 import static hexlet.code.core.GameEngine.WIN_RESULT;
 import static hexlet.code.core.GameEngine.executeGame;
 import static hexlet.code.core.Utils.createRandomNumber;
@@ -10,10 +8,10 @@ public class CalculatorGame {
 
     private static final int MAX_NUM_FOR_CALCULATOR = 9;
 
-    public static void play(Scanner scanner) {
+    public static void play() {
         String taskCondition = "What is the result of the expression?";
         String[][] gameData = createGameData(WIN_RESULT);
-        executeGame(taskCondition, gameData, scanner);
+        executeGame(taskCondition, gameData);
     }
 
     private static String getCorrectAnswer(int firstNum, int secondNum, String operation) {

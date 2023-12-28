@@ -1,7 +1,5 @@
 package hexlet.code.game;
 
-import java.util.Scanner;
-
 import static hexlet.code.core.GameEngine.WIN_RESULT;
 import static hexlet.code.core.GameEngine.executeGame;
 import static hexlet.code.core.Utils.createRandomNumber;
@@ -13,18 +11,15 @@ public class ProgressionGame {
     private static final int MIN_LENGTH_FOR_PROGRESSION = 5;
     private static final int MAX_LENGTH_FOR_PROGRESSION = 10;
 
-    public static void play(Scanner scanner) {
+    public static void play() {
         String taskCondition = "What number is missing in the progression?";
         String[][] gameData = createGameData(WIN_RESULT);
 
-        executeGame(taskCondition, gameData, scanner);
+        executeGame(taskCondition, gameData);
     }
 
 
-    private static String[] createProgression() {
-        int step = createRandomNumber(1, MAX_VALUE_FOR_STEP);
-        int length = createRandomNumber(MIN_LENGTH_FOR_PROGRESSION, MAX_LENGTH_FOR_PROGRESSION);
-        int firstNum = createRandomNumber(MAX_FIRST_VALUE_IN_PROGRESSION);
+    private static String[] prepareQuestionAndAnswer(int step, int length, int firstNum) {
 
         int[] progression = new int[length];
         progression[0] = firstNum;
@@ -57,10 +52,11 @@ public class ProgressionGame {
         String[][] gameData = new String[count][2];
 
         for (int i = 0; i < count; i++) {
-            String[] progression = createProgression();
-            String question = progression[0];
-            String answer = progression[1];
-            gameData[i] = new String[]{question, answer};
+            int step = createRandomNumber(1, MAX_VALUE_FOR_STEP);
+            int length = createRandomNumber(MIN_LENGTH_FOR_PROGRESSION, MAX_LENGTH_FOR_PROGRESSION);
+            int firstNum = createRandomNumber(MAX_FIRST_VALUE_IN_PROGRESSION);
+
+            gameData[i] = prepareQuestionAndAnswer(step, length, firstNum);
 
         }
 
